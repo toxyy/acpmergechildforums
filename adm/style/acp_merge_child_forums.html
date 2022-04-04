@@ -1,0 +1,22 @@
+{% INCLUDE 'overall_header.html' %}
+
+<h1>{{ lang('ACP_MCF') }}</h1>
+
+<form id="acp_merge_child_forums" name="acp_merge_child_forums" method="post" action="{{ U_ACTION }}">
+    <fieldset>
+        <dl>
+            <dt><label for="toxyy_merge_child_forums_submit">{{ lang('ACP_MCF_CONFIRM') }}</label><br /><span>{{ lang('ACP_MCF_CONFIRM_EXPLAIN') }}</span></dt>
+            <dd><input type="radio" class="radio" name="toxyy_merge_child_forums_submit" value="" /> {{ lang('YES') }} &nbsp;
+                <input type="radio" class="radio" name="toxyy_merge_child_forums_submit" value="" id="display_active" checked="checked" /> {{ lang('NO') }}</dd>
+        </dl>
+
+        <p class="submit-buttons">
+            <input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+            <input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
+        </p>
+
+        {{ S_FORM_TOKEN }}
+    </fieldset>
+</form>
+
+{% INCLUDE 'overall_footer.html' %}

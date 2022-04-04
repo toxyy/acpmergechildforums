@@ -1,0 +1,19 @@
+services:
+    toxyy.acpmergechildforums.controller.acp:
+        class: toxyy\acpmergechildforums\controller\acp_controller
+        arguments:
+            - '@controller.helper'
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+
+    toxyy.acpmergechildforums.listener:
+        class: toxyy\acpmergechildforums\event\listener
+        arguments:
+            - '@controller.helper'
+            - '@language'
+            - '%core.php_ext%'
+        tags:
+            - { name: event.listener }

@@ -1,0 +1,31 @@
+{
+	"name": "toxyy/acpmergechildforums",
+	"type": "phpbb-extension",
+	"description": "ACP Merge Child Forums for phpbb 3.3.x",
+	"homepage": "https://github.com/toxyy/acpmergechildforums",
+	"version": "1.0.0",
+	"time": "2022-04-01",
+	"keywords": ["phpbb", "extension", "acp", "merge forums"],
+	"license": "GPL-2.0-only",
+	"authors": [{
+			"name": "toxyy",
+			"email": "thrashtek@yahoo.com",
+			"homepage": "https://github.com/toxyy/",
+			"role": "Developer"
+		}],
+	"require": {
+		"php": ">=7.1.3"
+	},
+	"extra": {
+		"display-name": "ACP Merge Child Forums",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.3"
+		},
+		"version-check": {
+			"host": "toxyy.github.io",
+			"directory": "/version",
+			"filename": "acpmergechildforums.json",
+			"ssl": 1
+		}
+	}
+}
