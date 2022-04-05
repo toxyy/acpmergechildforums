@@ -3,36 +3,39 @@
  * toxyy ACP Merge Child Forums
  *
  * @copyright (c) 2022 toxyy <thrashtek@yahoo.com>
- * @license       GNU General Public License, version 2 (GPL-2.0)
+ * @license		  GNU General Public License, version 2	(GPL-2.0)
  */
 
 namespace toxyy\acpmergechildforums\event;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use	Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class listener implements EventSubscriberInterface
 {
-	protected $helper;
 	protected $language;
+	protected $request;
+	protected $acp_controller;
 	protected $php_ext;
 
 	/**
 	 * Constructor
 	 *
-	 * @param \phpbb\template\template    $template
-	 * @param \phpbb\user                 $user
-	 * @param \phpbb\language\language    $language
-	 * @param string                      $php_ext
+	 * @param \phpbb\language\language							   $language
+	 * @param \phpbb\request\request							   $request
+	 * @param \toxyy\acpmergechildforums\controller\acp_controller $acp_controller
+	 * @param string											   $php_ext
 	 */
-	public function __construct(
-		\phpbb\controller\helper $helper,
+	public function	__construct(
 		\phpbb\language\language $language,
+		\phpbb\request\request $request,
+		\toxyy\acpmergechildforums\controller\acp_controller $acp_controller,
 		$php_ext
 	)
 	{
-		$this->helper  = $helper;
-		$this->lang    = $language;
-		$this->php_ext = $php_ext;
+		$this->lang			  = $language;
+		$this->request		  = $request;
+		$this->acp_controller =	$acp_controller;
+		$this->php_ext		  = $php_ext;
 	}
 
 	public static function getSubscribedEvents()
@@ -42,19 +45,30 @@ class listener implements EventSubscriberInterface
 		];
 	}
 
-	public function acp_manage_forums_display_form($event)
+	public function	acp_manage_forums_display_form($event)
 	{
-		//global $phpbb_container;
 		$template_data = $event['template_data'];
-		//$controller	= $phpbb_container->get('toxyy.acpmergechildforums.controller.acp');
-        //$controller->set_page_url($template_data['U_BACK']);
-		$basename = "-toxyy-acpmergechildforums-acp-main_module";
-		$mode = "confirm";
+		$basename =	"-toxyy-acpmergechildforums-acp-main_module";
+		$mode =	"confirm";
+		$u_back_vars = "prev_basename={$this->request->variable('i', '')}
+					&amp;prev_icat={$this->request->variable('icat', 0)}
+					&amp;prev_mode={$this->request->variable('mode', '')}
+					&amp;prev_parent_id={$this->request->variable('parent_id', 0)}
+					&amp;f={$this->request->variable('f', 0)}
+					&amp;prev_action={$this->request->variable('action', '')}";
+
+		$submit = $this->request->variable('mcf_submit', '');
+
+		if($submit)
+		{
+			$forum_list = $this->request->variable('mcf_f', [0]);
+		}
+
 		$template_data += [
-			'U_MCF' => append_sid("index.$this->php_ext") . "&amp;i=$basename&amp;mode=$mode",
+			'U_MCF'				  => append_sid("./index.$this->php_ext") .	"&amp;i=$basename&amp;mode=$mode&amp;$u_back_vars",
+			'S_MCF_FORUM_OPTIONS' => $this->acp_controller->make_forum_select(false, $event['forum_id']),
 		];
-		//print_r($template_data);
-		//exit;
-		$event['template_data'] = $template_data;
+
+		$event['template_data']	= $template_data;
 	}
 }

@@ -1,6 +1,14 @@
 <dl>
-    <dt><label for="merge_child_forums">{{ lang('ACP_MCF') }}{{ lang('COLON') }}</label><br /><span>{{ lang('ACP_MCF_EXPLAIN') }}</span></dt>
-    <dd>
-      <a href="{{ U_MCF }}" id="merge_child_forums" class="button1">{{ lang('ACP_MCF_NAME') }}</a>
-    </dd>
+	<fieldset>
+		<dl>
+			<dt><label for="merge_child_forums">{{ lang('ACP_MCF') }}{{ lang('COLON') }}</label><br/><span>{{ lang('ACP_MCF_EXPLAIN') }}<br/>{{ lang('LOOK_UP_FORUMS_EXPLAIN') }}</span>
+			</dt>
+			<dd><select id="forum" class="mcf_forum" name="mcf_f[]" multiple="multiple" size="10">{{ S_MCF_FORUM_OPTIONS }}</select></dd>
+			<dd><label><input type="checkbox" class="radio" name="all_forums" value="1"/> {{ lang('ALL_FORUMS') }}</label></dd>
+		</dl>
+
+		<p class="quick">
+			<input class="button1" type="submit" name="mcf_submit" value="{{ lang('LOOK_UP_FORUM') }}"/>
+		</p>
+	</fieldset>
 </dl>

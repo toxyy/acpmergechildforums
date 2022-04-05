@@ -1,3 +1,0 @@
-toxyy_acpmergechildforums_main_module:
-    path: /adm/acpmergechildforums/{forumid}
-    defaults: { _controller: toxyy.acpmergechildforums.controller.acp:main, forumid: "0" }
