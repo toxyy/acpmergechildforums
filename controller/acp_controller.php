@@ -29,13 +29,12 @@ class acp_controller
 	 * https://github.com/phpbb/phpbb/blob/prep-release-3.3.7/phpBB/includes/functions_admin.php#L66
 	 * Simple version of jumpbox, just lists authed forums Made it simpler, allowed for parent forum selection
 	 */
-	function make_forum_select($select_id = false, $parent_id = false, $return_array = false)
+	function make_forum_select($select_id = false, $parent_id = false)
 	{
 		$rowset = get_forum_branch($parent_id, 'all', 'descending', false);
 		$right = 0;
 		$padding_store = ['0' => ''];
-		$padding = '';
-		$forum_list = ($return_array) ? [] : '';
+		$padding = $forum_list = '';
 
 		// Sometimes it could happen that forums will be displayed here not be displayed within the index page
 		// This is the result of forums not displayed at index, having list permissions and a parent of a forum with no permissions.

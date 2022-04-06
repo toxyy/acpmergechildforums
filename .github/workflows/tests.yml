@@ -13,14 +13,10 @@ on:
         branches:        # Run tests when commits are pushed to these branches in your repo
             - main
             - develop
-        paths-ignore:
-          - '.editorconfig'
     pull_request:        # Run tests when pull requests are made on these branches in your repo
         branches:
             - main
             - develop
-        paths-ignore:
-          - '.editorconfig'
 
 jobs:
     # START Basic Checks Job (EPV, code sniffer, images check, etc.)
