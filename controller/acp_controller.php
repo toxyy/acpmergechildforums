@@ -18,7 +18,7 @@ class acp_controller
 	 * @param \phpbb\db\driver\driver_interface $db
 	 */
 	public function __construct(
-		\phpbb\db\driver\driver_interface $db,
+		\phpbb\db\driver\driver_interface $db
 	)
 	{
 		$this->db = $db;
