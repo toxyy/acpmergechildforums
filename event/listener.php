@@ -54,15 +54,15 @@ class listener implements EventSubscriberInterface
 		$forum_list = $this->request->variable('mcf_f', [0]);
 		$u_action = $template_data['U_EDIT_ACTION'];
 
-		if($submit)
+		if ($submit)
 		{
-			if(confirm_box(true))
+			if (confirm_box(true))
 			{
 				trigger_error($this->language->lang('ACP_MCF_SUCCESS') . adm_back_link($u_action));
 			}
 			else
 			{
-				if(empty($forum_list) && !$all_forums)
+				if (empty($forum_list) && !$all_forums)
 				{
 					trigger_error($this->language->lang('ACP_MCF_NO_EXIST') . adm_back_link($u_action), E_USER_WARNING);
 				}

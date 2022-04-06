@@ -19,8 +19,8 @@ class acp_controller
 	 */
 	public function __construct(
 		\phpbb\db\driver\driver_interface $db,
-    )
-    {
+	)
+	{
 		$this->db = $db;
 	}
 
