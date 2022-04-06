@@ -2,8 +2,8 @@
 /**
  * toxyy ACP Merge Child Forums
  *
- * @copyright (c) 2022 toxyy <thrashtek@yahoo.com>
- * @license       GNU General Public License, version 2 (GPL-2.0)
+ * @copyright	(c) 2022 toxyy <thrashtek@yahoo.com>
+ * @license		GNU General Public License, version 2 (GPL-2.0)
  */
 
 namespace toxyy\acpmergechildforums;

@@ -2,8 +2,8 @@
 /**
  * toxyy ACP Merge Child Forums
  *
- * @copyright (c) 2022 toxyy <thrashtek@yahoo.com>
- * @license		  GNU General Public License, version 2	(GPL-2.0)
+ * @copyright	(c) 2022 toxyy <thrashtek@yahoo.com>
+ * @license		GNU General Public License, version 2 (GPL-2.0)
  */
 
 if (!defined('IN_PHPBB'))
@@ -13,13 +13,13 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang =	array();
+	$lang = [];
 }
 
-$lang =	array_merge($lang, array(
-	'ACP_MCF'				  => 'Merge	child forums',
-	'ACP_MCF_EXPLAIN'		  => 'Merges selected child	forums into	this forum.	All	posts are retained and all selected	forums will	be deleted.',
-	'ACP_MCF_CONFIRM'		  => 'Confirm merge',
-	'ACP_MCF_CONFIRM_EXPLAIN' => 'Are you sure you want	to merge these forums\'	children into this one?	This will delete all selected child	forums and move	their posts	to this	forum.',
-	'ACP_MCF_SUCCESS'		  => 'Selected forum children successfully merged.',
-));
+$lang =	array_merge($lang, [
+	'ACP_MCF'					=> 'Merge child forums',
+	'ACP_MCF_EXPLAIN'			=> 'Merges selected child forums into this forum. All selected forums will be deleted, and all their posts will be moved.',
+	'ACP_MCF_CONFIRM'			=> 'Are you sure you want to merge these forums into this one? This will delete the selected forums and move their posts to this forum.',
+	'ACP_MCF_NO_EXIST'			=> 'You must select at least one forum to merge.',
+	'ACP_MCF_SUCCESS'			=> 'Selected forum children successfully merged.',
+]);
