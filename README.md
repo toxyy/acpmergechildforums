@@ -1,6 +1,6 @@
 # toxyy ACP Merge Child Forums v1.0.0
 
-[Topic on phpBB.com](#TBA)
+[Topic on phpBB.com](https://www.phpbb.com/community/viewtopic.php?f=456&t=2619366)
 
 ## Requirements
 
