@@ -34,6 +34,10 @@ You can install this on the latest release of phpBB 3.3 by following the steps b
 
 * Report bugs and other issues to the [Issue Tracker](https://github.com/toxyy/acpmergechildforums/issues).
 
+## Screenshots
+
+![ACP Example](https://toxyy.github.io/acpmergechildforums/mcfacp.png)
+
 ## License
 
 [GPL-2.0](license.txt)
