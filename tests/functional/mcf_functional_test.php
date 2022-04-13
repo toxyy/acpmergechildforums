@@ -21,8 +21,9 @@ class mcf_functional_test extends \phpbb_functional_test_case
 	protected function setUp(): void
 	{
 		parent::setUp();
-
 		$this->add_lang_ext('toxyy/acpmergechildforums', 'info_acp_acpmergechildforums');
+		$this->login();
+		$this->admin_login();
 	}
 
 	public function test_edit_forum_installed()
