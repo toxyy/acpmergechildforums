@@ -94,7 +94,7 @@ class acp_controller
 			{
 				break;
 			}
-	
+
 			$this->auth->acl_clear_prefetch();
 			$this->cache->destroy('sql', FORUMS_TABLE);
 		}
