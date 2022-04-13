@@ -22,4 +22,5 @@ $lang =	array_merge($lang, [
 	'ACP_MCF_CONFIRM'			=> 'Are you sure you want to merge these forums into this one? This will delete the selected forums and move their posts to this forum.',
 	'ACP_MCF_NO_EXIST'			=> 'You must select at least one forum to merge.',
 	'ACP_MCF_SUCCESS'			=> 'Selected forum children successfully merged.',
+	'ACP_MCF_NO_FORUMS'			=> 'This forum has no child forums.',
 ]);

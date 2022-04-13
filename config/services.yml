@@ -2,7 +2,8 @@ services:
     toxyy.acpmergechildforums.controller.acp:
         class: toxyy\acpmergechildforums\controller\acp_controller
         arguments:
-            - '@dbal.conn'
+            - '@auth'
+            - '@cache.driver'
 
     toxyy.acpmergechildforums.listener:
         class: toxyy\acpmergechildforums\event\listener
@@ -10,6 +11,5 @@ services:
             - '@language'
             - '@request'
             - '@toxyy.acpmergechildforums.controller.acp'
-            - '%core.php_ext%'
         tags:
             - { name: event.listener }

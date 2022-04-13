@@ -1,3 +1,10 @@
 .mcf_forum {
 	resize: block;
 }
+
+.quick input.mcf_submit_disabled {
+	cursor: unset;
+	color: #666666;
+	border: 1px solid #666666;
+	background-position: top;
+}

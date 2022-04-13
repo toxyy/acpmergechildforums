@@ -1,7 +1,7 @@
 {
 	"name": "toxyy/acpmergechildforums",
 	"type": "phpbb-extension",
-	"description": "ACP Merge Child Forums for phpbb 3.3.x",
+	"description": "ACP Merge Child Forums for phpBB 3.2/3.3",
 	"homepage": "https://github.com/toxyy/acpmergechildforums",
 	"version": "1.0.0",
 	"time": "2022-04-01",
@@ -19,7 +19,7 @@
 	"extra": {
 		"display-name": "ACP Merge Child Forums",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.3"
+			"phpbb/phpbb": ">=3.2"
 		},
 		"version-check": {
 			"host": "toxyy.github.io",

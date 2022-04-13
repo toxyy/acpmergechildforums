@@ -4,9 +4,15 @@
 
 ## Requirements
 
-phpBB 3.3.x & PHP 7.1.3+
+The latest event used in this extension was added in phpBB 3.1.2.
+I use twig, which is 3.2+, so presumably the requirements are:
 
-[![Build Status](https://travis-ci.org/toxyy/acpmergechildforums.svg?branch=master)](https://travis-ci.org/toxyy/acpmergechildforums)
+phpBB 3.2+ & PHP 7.1.3+
+
+
+I have only tested on 3.3.7 with PHP 8.1, but no new syntax was used either.
+
+[![Build Status](https://github.com/toxyy/acpmergechildforums/workflows/Tests/badge.svg)](https://github.com/toxyy/acpmergechildforums/actions)
 ## Features
 
 Allows you to merge child forums into a parent forum when managing a forum within the ACP.

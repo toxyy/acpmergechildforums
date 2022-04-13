@@ -15,7 +15,6 @@ class listener implements EventSubscriberInterface
 	protected $language;
 	protected $request;
 	protected $acp_controller;
-	protected $php_ext;
 
 	/**
 	 * Constructor
@@ -23,19 +22,16 @@ class listener implements EventSubscriberInterface
 	 * @param \phpbb\language\language								$language
 	 * @param \phpbb\request\request								$request
 	 * @param \toxyy\acpmergechildforums\controller\acp_controller	$acp_controller
-	 * @param string												$php_ext
 	 */
 	public function __construct(
 		\phpbb\language\language $language,
 		\phpbb\request\request $request,
-		\toxyy\acpmergechildforums\controller\acp_controller $acp_controller,
-		$php_ext
+		\toxyy\acpmergechildforums\controller\acp_controller $acp_controller
 	)
 	{
 		$this->language			= $language;
 		$this->request			= $request;
 		$this->acp_controller	= $acp_controller;
-		$this->php_ext			= $php_ext;
 	}
 
 	public static function getSubscribedEvents()
@@ -49,20 +45,28 @@ class listener implements EventSubscriberInterface
 	{
 		$template_data = $event['template_data'];
 
+		$forum_id = $this->request->variable('f', 0);
 		$submit = $this->request->variable('mcf_submit', '');
 		$all_forums = $this->request->variable('mcf_all_forums', 0);
-		$forum_list = $this->request->variable('mcf_f', [0]);
+		$forum_ids = $this->request->variable('mcf_f', [0]);
 		$u_action = $template_data['U_EDIT_ACTION'];
+		$errors = [];
 
 		if ($submit)
 		{
 			if (confirm_box(true))
 			{
+				// get array of all forum ids if we are deleting all
+				if ($all_forums)
+				{
+					$forum_ids = $this->acp_controller->make_forum_select(false, $event['forum_id'], true);
+				}
+				$errors = $this->acp_controller->delete_forums($forum_ids, 'move', 'delete', $forum_id);
 				trigger_error($this->language->lang('ACP_MCF_SUCCESS') . adm_back_link($u_action));
 			}
 			else
 			{
-				if (empty($forum_list) && !$all_forums)
+				if (empty($forum_ids) && !$all_forums)
 				{
 					trigger_error($this->language->lang('ACP_MCF_NO_EXIST') . adm_back_link($u_action), E_USER_WARNING);
 				}
@@ -70,7 +74,7 @@ class listener implements EventSubscriberInterface
 				confirm_box(false, $this->language->lang('ACP_MCF_CONFIRM'), build_hidden_fields([
 					'mcf_submit'		=> $submit,
 					'mcf_all_forums'	=> $all_forums,
-					'mcf_f'				=> $forum_list
+					'mcf_f'				=> $forum_ids
 				]));
 
 				redirect($u_action);
@@ -78,7 +82,9 @@ class listener implements EventSubscriberInterface
 		}
 
 		$template_data = array_merge($template_data, [
-			'S_MCF_FORUM_OPTIONS' => $this->acp_controller->make_forum_select(false, $event['forum_id'])
+			'S_ERRORS'				=> ($errors) ? true : false,
+			'ERROR_MSG'				=> implode('<br /><br />', $errors),
+			'S_MCF_FORUM_OPTIONS'	=> $this->acp_controller->make_forum_select(false, $event['forum_id'])
 		]);
 
 		$event['template_data'] = $template_data;
