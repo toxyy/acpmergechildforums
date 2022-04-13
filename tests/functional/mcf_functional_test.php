@@ -30,6 +30,6 @@ class mcf_functional_test extends \phpbb_functional_test_case
 		$this->login();
 		$this->admin_login();
 		$crawler = self::request('GET', "adm/index.php?i=acp_forums&icat=7&mode=manage&parent_id=0&f=2&action=edit&sid=={$this->sid}");
-		$this->assertContains($this->lang('ACP_MCF'), $crawler->filter('.mcf_label')->text());
+		$this->assertStringContainsString($this->lang('ACP_MCF'), $crawler->filter('.mcf_label')->text());
 	}
 }
